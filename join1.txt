@@ -1,0 +1,46 @@
+inner join or Equi-join
+-----------------------------------
+table student ----studid,name,address
+table course------cid,studid,cname
+---------------------------------------------------------------- 
+create table hydstudents(studid int,name varchar2(30),address varchar2(30));
+insert into hydstudents values(105,'peter','hydrabad');
+
+select * from hydstudents; 
+
+create table hydcourse(cid int,studid int,cname varchar2(30));
+insert into hydcourse values(1002,104,'DBMS');
+select * from hydcourse;
+----------------------------------------------------------------------------------------------
+SELECT hydcourse.cid,hydcourse.cname, hydstudents.studid,hydstudents.Name, hydstudents.address FROM hydstudents
+INNER JOIN hydcourse ON hydcourse.studID=hydstudents.studID;
+-------------------------------------------------------------------------------------------------------
+SELECT b.cid,b.cname, a.studid,a.Name, a.address
+FROM hydstudents a
+INNER JOIN hydcourse b ON b.studID=a.studID;
+-----------------------------------------------------------------------------------------------------------------
+select a.studid,a.name,a.address,b.cid,b.cname from hydstudents a,hydcourse b where a.studid=b.studid;
+------------------------------------------------------------------------------------------------------
+select hydstudents.studid,hydstudents.name,hydstudents.address,hydcourse.cid,hydcourse.cname from hydstudents ,hydcourse  where hydstudents.studid=hydcourse.studid;
+----------------------------------------------------------------------------------------------
+select a.studid,a.name,a.address,b.cid,b.cname from hydstudents a,hydcourse b where a.studid=b.studid(+);
+------------------------------------------------------------------------------------------------------
+SELECT a.Name,a.studid,a.address,b.cid,b.cname
+FROM hydstudents a
+LEFT JOIN hydcourse b ON a.studid = b.studid;
+ORDER BY a.CName;
+------------------------------------------------------------------------------------------------------------
+RIGHT OUTER JOIN
+select a.studid,a.name,a.address,b.cid,b.cname from hydstudents a,hydcourse b where a.studid(+)=b.studid;
+--------------------------------------------------------------------------------------------------------------
+SELECT a.Name,a.studid,a.address,b.cid,b.cname
+FROM hydstudents a
+RIGHT JOIN hydcourse b ON a.studid = b.studid;
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
