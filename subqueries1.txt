@@ -1,0 +1,43 @@
+ subquery :-
+-----------------
+A subquery is a select statement that is embedded in a cluse of another select statement.
+
+example:-
+1) select ename from emp where sal>(select sal from emp where name='amit');
+---------------------------------
+select empno,ename,sal from emp where sal = any(1500,3000);
+select empno,ename,sal from emp where sal>1500 or sal>3000;
+select empno,ename,sal from emp where sal >1600 AND sal<3000;
+---------------------------------------------------------------------------------------------------------------
+2)select * from emp where sal=(select sal from(select distinct sal from emp order by sal desc)where rownum<=3
+minus
+select sal from(select distinct sal from emp order by sal desc)where rownum<=2);
+------------------------query to find third highest salary-------------------------------
+4500
+3500
+2500
+------------------------
+4500
+3500
+---------------------------
+2500
+minus,distinct(unique),rownum :-it is a metadata (data about data),
+
+3)select * from emp where empno>=(select empno from emp where name='kiran');
+
+--------------------------------------------------------------------------------------------------------------
+1)write a querry to increment the salary by 25% of all the employees who's age is greater than or equal to 27 years.  
+
+2)write a querry to delete of all the employees who's age is greater than or equal to 27 years.  
+
+4)UPDATE hystud4
+   SET SALARY = salary + SALARY * 0.25
+   WHERE AGE IN (SELECT AGE FROM hystud4 WHERE AGE >= 27 );
+
+5)DELETE FROM CUSTOMERS
+   WHERE AGE IN (SELECT AGE FROM CUSTOMERS_BKP
+      WHERE AGE >= 27 );
+
+
+
+
