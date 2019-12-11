@@ -153,24 +153,29 @@ END;
 
 
 
+
+
+
 --------------------------------------------------------------------------------------------
-DECLARE a NUMBER :=55;
+DECLARE 
+a NUMBER :=55;
 b NUMBER :=5;
 arth_operation VARCHAR2(20) :='DIVIDE';
 BEGIN
-dbms_output.put_line(‘Program started.' );
+dbms_output.put_line('Program started.' );
 CASE
 WHEN arth_operation = 'ADD'
-THEN dbms_output.put_line(‘Addition of the numbers are: '||a+b );
-WHEN arth_operation = ‘SUBTRACT'
-THEN dbms_output.put_line(‘Subtraction of the numbers are: '|| a-b);
-WHEN arth_operation = ‘MULTIPLY’
-THEN dbms_output.put_line(‘Multiplication of the numbers are: '|| a*b ); 
-WHEN arth_operation = ’DIVIDE'
-THEN dbms_output.put_line(‘Division of the numbers are: '|| a/b ):
-ELSE dbms_output.put_line(‘No operation action defined. Invalid operation'); 
+THEN dbms_output.put_line('Addition of the numbers are: '||a+b );
+WHEN arth_operation = 'SUBTRACT'
+THEN dbms_output.put_line('Subtraction of the numbers are: '|| a-b);
+WHEN arth_operation = 'MULTIPLY'
+THEN dbms_output.put_line('Multiplication of the numbers are: '|| a*b ); 
+WHEN arth_operation = 'DIVIDE'
+THEN dbms_output.put_line('Division of the numbers are: '|| a/b );
+ELSE 
+dbms_output.put_line('No operation action defined. Invalid operation'); 
 END CASE;
-dbms_output.put_line(‘Program completed.' );
+dbms_output.put_line('Program completed.' );
 END;
 ---------------------------------------------------------------------------------------
 
