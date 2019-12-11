@@ -38,7 +38,41 @@ FROM hydstudents a
 RIGHT JOIN hydcourse b ON a.studid = b.studid;
 -------------------------------------------------------------------------------------------------------------
 
+Types of Joins:-
+---------------------
+(INNER) JOIN: Returns records that have matching values in both tables.
 
+LEFT (OUTER) JOIN: Return all records from the left table, and the matched records from the right table.
+
+RIGHT (OUTER) JOIN: Return all records from the right table, and the matched records from the left table.
+
+FULL (OUTER) JOIN: Return all records when there is a match in either left or right table.
+--------------------------------------------------------
+SELECT a.Name,a.studid,a.address,b.cid,b.cname
+FROM hydstudents a
+FULL JOIN hydcourse b ON a.studid = b.studid;
+--------------------------------------------------------
+(emp)empno,name,sal
+
+(job)job,low_sal,high_sal
+---------------------------------------
+NON-EQUI JOIN
+---------------------
+CREATE TABLE HYDEMP(empno int,name varchar2(30),salary float);
+
+insert into hydemp values(105,'barun',11500);
+
+select * from hydemp;
+
+create table hydjob(job varchar2(30),lowsal float,highsal float);
+
+insert into hydjob values('sr manager',11000,12000);
+
+select * from hydjob;
+
+select e.name,e.salary,j.job from hydemp e, hydjob j where e.salary between j.lowsal and j.highsal;
+
+------------------------------------------------------------------------------
 
 
 
