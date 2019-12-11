@@ -104,13 +104,22 @@ insert into assessment values(101,87);
 insert into assessment values(102,47);
 
 SELECT STUDENTID,CASE WHEN MARKS < 50 THEN 'FAIL' ELSE Marks END FROM ASSESSMENT
+----------------------------------------------------------------
+DECLARE 
+     declare
+BEGIN
+   executable_section
 
-
-
-
-
-
-
+EXCEPTION
+   WHEN exception_name1 THEN
+      [statements]
+   WHEN exception_name2 THEN
+      [statements]
+   WHEN exception_name_n THEN
+      [statements]
+   WHEN OTHERS THEN
+      [statements]
+END [procedure_name];
 
 
 --------------------------------------------------------------------------------------
@@ -120,6 +129,12 @@ insert into assessment values(101,87);
 
 SELECT STUDENTID,CASE WHEN MARKS > 50 THEN 'FAIL' ELSE Marks END FROM ASSESSMENT
 
+--------------------------------------------------------------------
+SELECT STUDENTID,CASE WHEN MARKS < 50 THEN 'FAIL' 
+WHEN MARKS > 50 THEN 'PASS'
+ELSE Marks END FROM ASSESSMENT
+
+----------------------------------------------------------------------------------------------------
 create table hydemployee(empid int,name varchar2(30),salary int);
 
 insert into hydemployee values(3,'David',6000);
@@ -130,12 +145,34 @@ BEGIN
   UPDATE hydEmployee SET Salary=5000 WHERE EmpId = 1;
   COMMIT;
   UPDATE hydEmployee SET Name='Dravid', Salary = 5000 WHERE EmpId = 3;
-  INSERT INTO hydEmployee VALUES(3, 'Yuvraj', 2500);
+  INSERT INTO hydEmployee VALUES(4, 'Yuvraj', 2500);
 EXCEPTION
   WHEN OTHERS THEN
    COMMIT;
 END;
+
+
+
 --------------------------------------------------------------------------------------------
+DECLARE a NUMBER :=55;
+b NUMBER :=5;
+arth_operation VARCHAR2(20) :='DIVIDE';
+BEGIN
+dbms_output.put_line(‘Program started.' );
+CASE
+WHEN arth_operation = 'ADD'
+THEN dbms_output.put_line(‘Addition of the numbers are: '||a+b );
+WHEN arth_operation = ‘SUBTRACT'
+THEN dbms_output.put_line(‘Subtraction of the numbers are: '|| a-b);
+WHEN arth_operation = ‘MULTIPLY’
+THEN dbms_output.put_line(‘Multiplication of the numbers are: '|| a*b ); 
+WHEN arth_operation = ’DIVIDE'
+THEN dbms_output.put_line(‘Division of the numbers are: '|| a/b ):
+ELSE dbms_output.put_line(‘No operation action defined. Invalid operation'); 
+END CASE;
+dbms_output.put_line(‘Program completed.' );
+END;
+---------------------------------------------------------------------------------------
 
 
 
