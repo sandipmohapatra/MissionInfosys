@@ -1,0 +1,224 @@
+set serveroutput on
+
+declare
+x number;
+y number;
+z number;
+begin
+x:=&x;
+y:=&y;
+z:=x+y;
+dbms_output.put_line('the sum is '||z);
+end;
+
+-------------------
+declare 
+  a number;
+begin
+  a := :a;
+dbms_output.put_line('Inputed Number is >> '|| a);
+end;
+--------------------------------------------------
+--------------------------------------------------------------------
+//wap to enter 5 nos and find sum and average.
+--------------------------------------------------------------------
+declare 
+a number;
+b number;
+c number;
+begin
+a:= :a;
+b:= :b;
+c:=a+b;
+dbms_output.put_line('the sum is '|| c);
+end;
+
+
+
+
+------------------------------------------------------------------------
+
+declare
+a number:=10;
+b number:=20;
+c number;
+begin
+c:=a+b;
+dbms_output.put_line('the result is:'||c);
+end;
+
+
+
+
+
+-----------------------------------
+declare
+a number:=10;
+b number:=20;
+begin
+if(a>b)then
+dbms_output.put_line('the greatest is:'||a);
+else
+dbms_output.put_line('the greatest is:'||b);
+end if;
+end;
+
+
+
+
+-------------------------
+declare
+a number;
+begin
+a:=:a;
+if(a mod 2=0)then
+dbms_output.put_line(' the no is even ');
+else
+dbms_output.put_line(' the no is odd ');
+end if;
+end;
+
+
+
+-------------------------------------------------
+declare
+a number:=10;
+b number:=20;
+c number:=30;
+begin
+if(a>b and a>c) then
+dbms_output.put_line('the geatest is:'||a);
+elsif (b>a and b>c) then
+dbms_output.put_line('the geatest is:'||b);
+else
+dbms_output.put_line('the geatest is:'||c);
+end if;
+end;
+------------------------------------------------
+
+
+create table assessment(studentid int,marks char(20));
+
+insert into assessment values(101,87);
+
+insert into assessment values(102,47);
+
+SELECT STUDENTID,CASE WHEN MARKS < 50 THEN 'FAIL' ELSE Marks END FROM ASSESSMENT
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------
+create table assessment(studentid int,marks char(20));
+
+insert into assessment values(101,87);
+
+SELECT STUDENTID,CASE WHEN MARKS > 50 THEN 'FAIL' ELSE Marks END FROM ASSESSMENT
+
+create table hydemployee(empid int,name varchar2(30),salary int);
+
+insert into hydemployee values(3,'David',6000);
+
+select * from hydemployee;
+-------------------------------------------------------------------------------------
+BEGIN
+  UPDATE hydEmployee SET Salary=5000 WHERE EmpId = 1;
+  COMMIT;
+  UPDATE hydEmployee SET Name='Dravid', Salary = 5000 WHERE EmpId = 3;
+  INSERT INTO hydEmployee VALUES(3, 'Yuvraj', 2500);
+EXCEPTION
+  WHEN OTHERS THEN
+   COMMIT;
+END;
+--------------------------------------------------------------------------------------------
+
+
+
+declare 
+i number;
+begin
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+------------------------------------
+
+
+declare 
+i number;
+begin
+for i in reverse 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+
+
+
+
+
+
+-----------------------------
+declare 
+i number;
+j number;
+k number:=5;
+begin
+for i in 1..5 loop
+for j in 1..5 loop
+dbms_output.put_line(k||' * '||j||' = '||(k*j));
+end loop;
+end loop;
+end;
+
+--------------------------------------------------------------------
+create table circle(radius number,area number);
+--------------------------------------------------------------------
+declare
+pi constant number(4,2):=3.14;
+radius number;
+area number;
+begin
+for radius in 5..10 loop
+area:=pi*power(radius,2);
+insert into circle values(radius,area);
+end loop;
+end;
+
+select * from circle;
+----------------------------------------------
+
+
+DECLARE  
+name     VARCHAR(25) NOT NULL := 'Smith';  
+surname  name%TYPE := 'Jones';
+address emp.address%TYPE := 'bangalore';
+ BEGIN  
+DBMS_OUTPUT.PUT_LINE('name=' || name);
+DBMS_OUTPUT.PUT_LINE('surname=' || surname); 
+DBMS_OUTPUT.PUT_LINE('address=' || address); 
+END; 
+
+
+
+
+
+----------------------------------------------------------
+case example :-
+DECLARE  
+   grade char(1) := 'A';  
+BEGIN  
+   CASE grade  
+      when 'A' then dbms_output.put_line('Excellent');  
+      when 'B' then dbms_output.put_line('Very good');  
+      when 'C' then dbms_output.put_line('Good');  
+      when 'D' then dbms_output.put_line('Average');  
+      when 'F' then dbms_output.put_line('Passed with Grace');  
+      else dbms_output.put_line('Failed');  
+   END CASE;  
+END;  
+-----------------------------------------------------------
