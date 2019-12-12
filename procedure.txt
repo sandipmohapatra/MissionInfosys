@@ -1,0 +1,44 @@
+Procedure:- it is a pl/sql code which execute when called but they donot return any value
+------------------------------------------------------------------------------------------------------
+//create table emp(empno,name,job);
+create or replace procedure del_manager is
+begin 
+delete from emp where job='manager';
+commit;
+end del_manager;
+-------------------------
+begin
+del_manager;
+end;
+------------------------------------------
+
+
+create or replace procedure insert_employee   
+(empid IN NUMBER,empname IN VARCHAR2,empage IN NUMBER,salary IN NUMBER,empaddress IN VARCHAR2)    
+is    
+begin    
+insert into users values(empid,empname,empage,salary,empaddress);    
+end; 
+-----------------------------------------------------------------------------------------------------------
+create table users(empid number,empname char(20),empage int,salary int,empaddress char(20))
+------------------------------------------------------
+BEGIN    
+   insert_employee(101,'Rahul',23,45000,'bangalore');  
+ insert_employee(102,'kiran',23,45000,'bangalore');  
+ insert_employee(103,'Manasa',23,45000,'bangalore');  
+  END;   
+
+select * from users;
+-----------------------------------------------------------------
+ 
+create or replace procedure add_number(i number default 0,j number default 0,k number default 0) is
+begin
+dbms_output.put_line('result:'||(i+j+k));
+end;
+--------------------------------------------------------------------------------------------------
+begin
+add_number(10,20,30);
+end;
+
+
+
