@@ -1,0 +1,43 @@
+cursors:- cursors are used whenever one want to retrieve more than one record from the database.cursor is the amount of memory reserved to accomodate more than one row of the table.
+cursor are divide into two types:-
+1)implicit cursor
+2)explicit cursor
+
+implicit cursor:- oracle implicitly creates and open a cursor for every sql data manipulation statement that is not part of an explicit declared cursor.programmer has no control over this.
+
+explicit cursor:-pl/sql programmer use explicit cursor only.the result of this cursor select statement can consist of more than one rows depending on query.
+
+activeset:- it is a group of rows which are hold in the memory area of the cursor.
+
+steps:-
+1)declare (memory allocation)
+2)open (activeset is created)
+3)manipulation(loop/rows)
+4)close(release the memory)
+
+
+cursor attributes:-
+-------------------------
+1)%isopen :-when there is no activeset it will retrieve false and if is there activeset is true.return type is boolean.
+
+2)%found:-to know whether the cursor pointer points to a valid row inside the cursor.we cannot fetch when no more rows available.return type is boolean.
+
+3)%notfound:-(same) 
+
+4)%rowcount:-it will retrieve the position of the pointer within the activeset .
+
+
+example:-
+
+declare
+cursor c is select ename from emp ;
+x varchar2(15);
+begin
+open c;
+loop
+fetch c into x;
+exit when c %notfound; 
+dbms_output.put_line(c %rowcount||'   '||x);
+end loop;
+end;
+------------------------------------------------------------------------

@@ -1,0 +1,27 @@
+Trigger :-
+Triggers are stored programs, which are automatically executed or fired when some event occurs.
+
+Triggers are written to be executed in response to any of the following events.
+
+A database manipulation (DML) statement (DELETE, INSERT, or UPDATE).
+
+Trigger Timing: BEFORE, AFTER
+Trigger Event: INSERT,UPDATE,DELETE
+Trigger Type: Row
+
+
+Ex:
+CREATE OR REPLACE TRIGGER t1 
+BEFORE INSERT ON emphasisemp 
+BEGIN
+IF(TO_CHAR(SYSDATE,'DY')IN('SAT','SUN')) OR 
+(TO_CHAR(SYSDATE,'HH24:MI') NOT BETWEEN '08' AND '15')
+THEN RAISE_APPLICATION_ERROR(-20500,'You may insert into employees table only during business hours');
+END IF;
+END;
+ 
+insert into IBMEMP values(1009,'Vikram','ProjtLead');
+
+------------------------------------------------------------
+
+
