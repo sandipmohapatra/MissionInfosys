@@ -1,0 +1,77 @@
+Mongodb:-
+----------------
+Database :- Mysql,sqlserver,Oracle  -structured database (rows and columns)
+
+Mongodb,cacendra :- unstructured database.Data will be in form of document.
+*company which use it are *facebook,paytm,etc..
+
+1)mongodb is a cross-platform ,document oriented base,high performance,easy scalability.
+2)mongodb works on concept of collection and document.
+------------------------------------------------------------------------------------
+RDBMS			Mongodb
+-------------------------------------------------------------------
+Table			collection
+database			database
+Tuple/row			document
+column			field
+table join			embedded document
+PrimaryKey		default key_id provided by 						mongodb itself
+-------------------------------------------------------------------------------------------------------
+3)document :- it is a set of key-value pairs.
+4)collection is a group of mongodb document.
+----------------------------------------------------------------
+example of a collection
+-----------------------------------
+comment:
+[
+{
+user:"Koyel",
+message:"Good Morning",
+dateCreated: new Date(2018,15,1,12,20),
+like:120
+},
+{
+user:"Aritra",
+message:"Good Morning",
+dateCreated: new Date(2018,15,1,12,20),
+like:125
+}
+]
+---------------------------------------------------------------------------
+www.mongodb.org official website.
+---------------------------------------------------------------------------
+CREATE FOLDER :- C:\data\db
+---------------------------------------------------
+
+1)to view database
+show databases;
+show dbs;
+----------------------------------------------
+2)to create database
+use wiprostudents;
+-------------------------------------------------------
+3)to show no of tables
+show tables;
+show collections;
+---------------------------------------------------------
+4)to see the database in which you are working
+db;
+------------------------------------------------------------
+5)to create table/collection
+db.createCollection('student');
+---------------------------------------------------------------
+6)to insert data into student
+db.student.insert({name:'Koyel',email:'Koyel@gmail.com',username:'koyel',password:'1234'});
+--------------------------------------------------------------------------------------
+7)to view the rows/document
+db.student.find();
+--------------------------------------------------------
+8)to view the rows/document in a proper order
+db.student.find().pretty();
+---------------------------------------------------------
+9)to update the document
+db.student.update({email:'sunil@gmail.com'},{$set:{password:'sunil@1'}});
+----------------------------------------------------------------------
+10)to delete the document
+db.student.remove({username:'susmita'});
+----------------------------------------------------------------
