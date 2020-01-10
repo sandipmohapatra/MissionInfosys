@@ -39,7 +39,7 @@ insert into student(name,address,idno,DOB) values(&name,&address,&idno,&DOB)
 insert into student(name,address,idno,DOB) values('&name','&address',&idno,'&DOB')
 ----------------------------------------------------------------------------------
 
-2)comparison operator :- =,>=,<=,>,<,!= (not equal to)  
+2)comparison operator :- =,>=,<=,>,<,!=,<> (not equal to)  
 
  =>select * from student where salary > 40000;
 ----------------------------------------------------------------------------------
@@ -103,13 +103,13 @@ DATE
 it is stored as a number in the database and hence one can add number to date ,subtract number to date.
 DATE FUNCTION:-
 ---------------------------
-1)select months_between('28-mar-2019','28-feb-2019') from dual;
-find date of birth:-
-select TRUNC(MONTHS_BETWEEN(sysdate, '01-jul-2019')/12) from dual;
+1)select months_between('28-mar-2019','28-feb-2019') from dual;//dummy table 
 2)select last_day(sysdate)from dual;
 or
 2)select last_day('02-feb-2019')from dual;
+
 3)select to_char(sysdate,'DD Month yyyy HH:MI:SS AM AD') from dual;
+
 to convert date data type to char data type.
 4)select * from emp where to_char(hiredate,'D') in (1,2,6); 
 (employee who have joined either on sunday,monday,friday)
@@ -144,9 +144,6 @@ select * from emp order by sal desc;
 Aggregate Functions :-(apply only for column)
 
 1) select sum(sal),avg(sal),max(sal),min(sal),count(sal) from emp;
-
-
-
 
 create table student6(rollno number,name varchar2(15),day number,per number(5,2));
 
@@ -234,14 +231,20 @@ select empno,sal,sal*12 as annual_salary,comm commission from emp;
 there are 5 constraints in oracle
 ----------------------------------------
 1)primary key :- if we declare the field as primary key then we cannot enter duplicate value and also we cannot leave the field empty.
+
 2)not null:- if we declare the field as not null we cannot leave the field empty.
+
 3)unique :-if we declare the field as unique then we cannot enter duplicate value.
+
 4)check :-we can give limit to the field.
+
 5)foreign key:-it is a reference key which refers to other table data.
-kousi.2516@gmail.com
--------------------
-create table studentxy(regno number primary key,name varchar2(30) not null,address varchar2(30) unique,
-marks number check(marks > 20));
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+create table studentxy(regno number primary key,name varchar2(30) not null,address varchar2(30) unique,marks number check(marks > 20));
 
 create table studentxy(regno number primary key,name varchar2(30) not null,address varchar2(30) unique,marks number check(marks > 20));
 
@@ -254,22 +257,19 @@ insert into studentxy(REGNO,ADDRESS,MARKS) values(103,'HYD',23)
 create table library(regno number references studentxy,DOE date,DOR date)
 
 
-
-
-6)Composite key is a key which is the combination of more than one  column of a given table.
+6)Composite key is a key which is the combination of more than one  column of a given table if we want to make primary key.
 
 Create table student2  
 (rollno number,regno varchar(30),address varchar(50),  
 PRIMARY KEY (rollno, regno));  
 ----------------------------------------------------------------------------------
+
+
 7)Alternate key is also called secondary key .
 
 Example :-student table contain ROLL NO,NAME,ADDRESS and MARKS
 
 Here ROLL NO is primary key and rest of all columns are alternate keys.
-
-
-
 
 
 
@@ -350,6 +350,11 @@ desc employee;
 drop table employee;(data+table will be deleted)
 
 desc employee;
+
+
+
+
+
 
 select distinct(empno) from employee;(only unique value will be displayed)
 
@@ -453,7 +458,7 @@ And, it doesn't have Transitive Dependency.
 https://beginnersbook.com/2015/05/normalization-in-dbms/
 -----------------------------------------------------------------------------------
 stud:-
-empno number pk
+empno number primary key
 name varchar2(30)
 address varchar2(30)
 ------------------------------------------------------
@@ -504,12 +509,44 @@ As
 Select Roll_No,Name,Marks From Student , Student_Temp
 
 Where Student.Marks > Student_Temp.Average_Marks);
-----------------------------------------------------------------------------------------------------------------------------
-1)Write a querry to create a student table having columns (rollno,name,address,email,addhar cardno,phy marks,chem marks,bio marks)
+------------------------------------------------------------------------------------------------------------------------
+1)Write a query to create a student table having columns (rollno,name,address,email,addhar cardno,phy marks,chem marks,bio marks)
 2)insert 10 records into it.
 3)find total and average of 3 subjects marks.
-----------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------self join-------------------------------------------
+self join :- The join is within a single table.
+*we are displaying all customer pairs who has different customerID's
+
+<>  ------> not equal to 
+SELECT * FROM Test Where name <> 'amit'
+----------------------------------------------------------------------------
+create table customer (CustomerID number,CustomerName varchar2(30),ContactName varchar2(30),	
+Address varchar2(30),City varchar2(30),PostalCode number,Country varchar2(30))
+---------------------------------------------------------------------------------
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customer A, Customer B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+--------------------------------------------------------------------------------
+inner join:- we join 2 tables having same column name.
+-------------------------------------------------------------
+outer join :-
+left outer join
+right outer join
+----------------------------------------------
 
 
 
